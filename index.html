@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dottor1k - Официальный сайт</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(135deg, #ffffff 0%, #e6f7ff 100%);
+            color: #1a5276;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 15px rgba(0, 120, 215, 0.1);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            animation: slideDown 0.5s ease;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: #0078d7;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            transition: transform 0.3s;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+        }
+        
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: #1a5276;
+            font-weight: 600;
+            font-size: 16px;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #0078d7;
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            color: #0078d7;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        
+        .menu-toggle span {
+            width: 30px;
+            height: 3px;
+            background: #0078d7;
+            margin: 3px 0;
+            transition: all 0.3s;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 100px;
+            text-align: center;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="%230078d7" opacity="0.1" width="100" height="100"/><path fill="%230078d7" opacity="0.2" d="M30,30L70,70M70,30L30,70"/></svg>');
+            animation: fadeIn 1s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0,120,215,0.1) 0%, rgba(255,255,255,0) 70%);
+            animation: pulse 15s infinite linear;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #0078d7;
+            animation: slideUp 0.8s ease;
+            position: relative;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: #1a5276;
+            animation: slideUp 0.8s ease 0.2s forwards;
+            opacity: 0;
+            position: relative;
+        }
+        
+        .hero-buttons {
+            animation: slideUp 0.8s ease 0.4s forwards;
+            opacity: 0;
+            position: relative;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #0078d7;
+            color: white;
+            padding: 14px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid #0078d7;
+            font-size: 18px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: white;
+            transition: all 0.4s;
+            z-index: -1;
+        }
+        
+        .btn:hover {
+            color: #0078d7;
+        }
+        
+        .btn:hover::before {
+            left: 0;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: #0078d7;
+            margin-left: 20px;
+        }
+        
+        .btn-outline::before {
+            background: #0078d7;
+        }
+        
+        .btn-outline:hover {
+            color: white;
+        }
+        
+        /* Sections */
+        .section {
+            padding: 100px 0;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: #0078d7;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 3px;
+            background: #0078d7;
+            animation: linePulse 2s infinite;
+        }
+        
+        .section-title p {
+            color: #1a5276;
+            max-width: 700px;
+            margin: 20px auto 0;
+            font-size: 18px;
+        }
+        
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            padding-right: 40px;
+        }
+        
+        .about-text h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #0078d7;
+        }
+        
+        .about-text p {
+            margin-bottom: 15px;
+            font-size: 17px;
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .about-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 120, 215, 0.2);
+            transition: all 0.5s ease;
+            transform: perspective(1000px) rotateY(10deg);
+            border: 5px solid white;
+        }
+        
+        .about-image:hover img {
+            transform: perspective(1000px) rotateY(0) scale(1.03);
+            box-shadow: 0 15px 40px rgba(0, 120, 215, 0.3);
+        }
+        
+        /* Gallery Section */
+        #gallery {
+            background-color: #f8fbff;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 120, 215, 0.15);
+            transition: all 0.4s ease;
+            height: 250px;
+            background: linear-gradient(135deg, #0078d7 0%, #1a5276 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 20px;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 120, 215, 0.25);
+        }
+        
+        .gallery-item:hover::before {
+            opacity: 1;
+        }
+        
+        /* Social Links */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 70px;
+            height: 70px;
+            background: #0078d7;
+            color: white;
+            border-radius: 50%;
+            margin: 0 20px;
+            font-size: 28px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .social-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            transform: scale(0);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            z-index: 0;
+        }
+        
+        .social-links a i {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .social-links a:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 25px rgba(0, 120, 215, 0.4);
+        }
+        
+        .social-links a:hover::before {
+            transform: scale(1);
+        }
+        
+        .social-links a:hover i {
+            color: #0078d7;
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #0078d7 0%, #1a5276 100%);
+            color: white;
+            padding: 60px 0 30px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .footer-logo {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links {
+            display: flex;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .footer-links a {
+            color: white;
+            margin: 0 15px 10px;
+            text-decoration: none;
+            transition: opacity 0.3s;
+            font-weight: 500;
+        }
+        
+        .footer-links a:hover {
+            opacity: 0.8;
+        }
+        
+        .copyright {
+            margin-top: 20px;
+            opacity: 0.8;
+            font-size: 15px;
+        }
+        
+        /* Floating elements */
+        .floating-element {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 120, 215, 0.1);
+            border-radius: 10px;
+            z-index: -1;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideDown {
+            from { 
+                transform: translateY(-100%);
+            }
+            to { 
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.1); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+        
+        @keyframes linePulse {
+            0% { width: 70px; }
+            50% { width: 100px; }
+            100% { width: 70px; }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(5deg); }
+            100% { transform: translateY(0) rotate(0deg); }
+        }
+        
+        /* Media Queries */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 40px;
+            }
+            
+            .about-text {
+                padding-right: 20px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            nav ul li {
+                margin: 10px 15px;
+            }
+            
+            .menu-toggle {
+                display: flex;
+                position: absolute;
+                top: 25px;
+                right: 20px;
+            }
+            
+            nav {
+                display: none;
+                width: 100%;
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .hero {
+                padding: 100px 0 80px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .btn {
+                display: block;
+                margin: 15px auto;
+                width: 80%;
+                max-width: 280px;
+            }
+            
+            .btn-outline {
+                margin-left: 0;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-text {
+                padding-right: 0;
+                margin-bottom: 40px;
+            }
+            
+            .section {
+                padding: 80px 0;
+            }
+            
+            .social-links a {
+                width: 60px;
+                height: 60px;
+                font-size: 24px;
+                margin: 0 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .section-title h2 {
+                font-size: 28px;
+            }
+            
+            .about-text h3 {
+                font-size: 24px;
+            }
+            
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .social-links {
+                flex-wrap: wrap;
+            }
+            
+            .social-links a {
+                margin: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating elements for background -->
+    <div class="floating-element" style="top: 15%; left: 5%; animation: float 8s infinite ease-in-out;"></div>
+    <div class="floating-element" style="top: 35%; right: 5%; animation: float 12s infinite ease-in-out;"></div>
+    <div class="floating-element" style="top: 70%; left: 8%; animation: float 10s infinite ease-in-out;"></div>
+    <div class="floating-element" style="top: 55%; right: 10%; animation: float 9s infinite ease-in-out;"></div>
+
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <i class="fas fa-star-of-life"></i>
+                    Dottor1k
+                </a>
+                <div class="menu-toggle" id="menuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <nav id="nav">
+                    <ul>
+                        <li><a href="#">Главная</a></li>
+                        <li><a href="#about">Обо мне</a></li>
+                        <li><a href="#gallery">Галерея</a></li>
+                        <li><a href="#contacts">Контакты</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Dottor1k</h1>
+            <p>Добро пожаловать на мой официальный сайт! Здесь вы найдете мои работы, творчество и многое другое.</p>
+            <div class="hero-buttons">
+                <a href="#gallery" class="btn">Мои работы</a>
+                <a href="#contacts" class="btn btn-outline">Связаться со мной</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Обо мне</h2>
+                <p>Узнайте больше о том, чем я занимаюсь и что меня вдохновляет</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Творчество и вдохновение</h3>
+                    <p>Привет! Меня зовут Dottor1k, и я занимаюсь созданием уникального контента. Мои работы можно найти на различных платформах, включая TikTok и Telegram.</p>
+                    <p>Я постоянно развиваюсь в своем творчестве и стараюсь предлагать только качественный и интересный контент для своей аудитории.</p>
+                    <p>Мои увлечения включают искусство, технологии и все, что связано с креативным самовыражением. Следите за моими обновлениями в социальных сетях!</p>
+                </div>
+                <div class="about-image">
+                    <img src="dottor1k/photo_2025-07-31_21-52-27.jpg" alt="Dottor1k" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'500\' height=\'350\' viewBox=\'0 0 500 350\'><rect fill=\'%230078d7\' opacity=\'0.2\' width=\'500\' height=\'350\'/><circle fill=\'%230078d7\' opacity=\'0.4\' cx=\'250\' cy=\'175\' r=\'80\'/><text x=\'250\' y=\'185\' font-family=\'Arial\' font-size=\'24\' text-anchor=\'middle\' fill=\'%231a5276\'>Dottor1k</text></svg>'">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Моя галерея</h2>
+                <p>Последние работы и проекты, которые я создал</p>
+            </div>
+            <div class="gallery">
+                <div class="gallery-item" style="background: url('dottor1k/photo_2025-09-01_19-56-23.jpg') center/cover;" onerror="this.style.background='linear-gradient(135deg, #0078d7 0%, #1a5276 100%)'; this.innerHTML='Рисунок 1'"></div>
+                <div class="gallery-item" style="background: url('dottor1k/photo_2025-09-01_20-52-09.jpg') center/cover;" onerror="this.style.background='linear-gradient(135deg, #0078d7 0%, #1a5276 100%)'; this.innerHTML='Рисунок 2'"></div>
+                <div class="gallery-item" style="background: url('dottor1k/photo_2025-09-01_20-52-15.jpg') center/cover;" onerror="this.style.background='linear-gradient(135deg, #0078d7 0%, #1a5276 100%)'; this.innerHTML='Рисунок 3'"></div>
+                <div class="gallery-item" style="background: url('dottor1k/photo_2025-09-01_20-52-18.jpg') center/cover;" onerror="this.style.background='linear-gradient(135deg, #0078d7 0%, #1a5276 100%)'; this.innerHTML='Рисунок 4'"></div>
+                <div class="gallery-item" style="background: url('dottor1k/photo_2025-09-01_20-52-25.jpg') center/cover;" onerror="this.style.background='linear-gradient(135deg, #0078d7 0%, #1a5276 100%)'; this.innerHTML='Рисунок 5'"></div>
+                <div class="gallery-item" style="background: url('dottor1k/photo_2025-09-01_20-52-53.jpg') center/cover;" onerror="this.style.background='linear-gradient(135deg, #0078d7 0%, #1a5276 100%)'; this.innerHTML='Рисунок 6'"></div>
+            </div>
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="https://t.me/+EEOBunTDjKoxYjky" class="btn" target="_blank">
+                    <i class="fab fa-telegram-plane"></i> Больше в Telegram
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacts" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Мои контакты</h2>
+                <p>Свяжитесь со мной через социальные сети</p>
+            </div>
+            <div class="social-links">
+                <a href="https://t.me/+EEOBunTDjKoxYjky" target="_blank">
+                    <i class="fab fa-telegram-plane"></i>
+                </a>
+                <a href="https://www.tiktok.com/@dottor1k" target="_blank">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Dottor1k</div>
+                <div class="footer-links">
+                    <a href="#">Главная</a>
+                    <a href="#about">Обо мне</a>
+                    <a href="#gallery">Галерея</a>
+                    <a href="#contacts">Контакты</a>
+                </div>
+                <div class="copyright">
+                    &copy; 2023 Dottor1k. Все права защищены.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('.section');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+            
+            const menuToggle = document.getElementById('menuToggle');
+            const nav = document.getElementById('nav');
+            
+            menuToggle.addEventListener('click', function() {
+                nav.classList.toggle('active');
+                
+                const spans = menuToggle.querySelectorAll('span');
+                if (nav.classList.contains('active')) {
+                    spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                    spans[1].style.opacity = '0';
+                    spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+                } else {
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                }
+            });
+            
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Закрываем мобильное меню после клика
+                        if (nav.classList.contains('active')) {
+                            nav.classList.remove('active');
+                            const spans = menuToggle.querySelectorAll('span');
+                            spans[0].style.transform = 'none';
+                            spans[1].style.opacity = '1';
+                            spans[2].style.transform = 'none';
+                        }
+                    }
+                });
+            });
+            
+            function createFloatingElements() {
+                const container = document.body;
+                for (let i = 0; i < 8; i++) {
+                    const element = document.createElement('div');
+                    element.classList.add('floating-element');
+                    element.style.top = Math.random() * 100 + '%';
+                    element.style.left = Math.random() * 100 + '%';
+                    element.style.width = (20 + Math.random() * 40) + 'px';
+                    element.style.height = (20 + Math.random() * 40) + 'px';
+                    element.style.background = `rgba(0, 120, 215, ${0.05 + Math.random() * 0.1})`;
+                    element.style.animation = `float ${8 + Math.random() * 7}s infinite ease-in-out`;
+                    element.style.animationDelay = `${Math.random() * 5}s`;
+                    container.appendChild(element);
+                }
+            }
+            
+            createFloatingElements();
+        });
+    </script>
+</body>
+</html>
